@@ -50,6 +50,24 @@ public class Mesa implements Serializable {
         this.codigo = codigo;
         this.reservas = reservas;
     }
+
+    public Mesa(Long id, String tipo, Integer capacidad, String ubicacion, String codigo) {
+        this.id = id;
+        this.tipo = tipo;
+        this.capacidad = capacidad;
+        this.ubicacion = ubicacion;
+        this.codigo = codigo;
+    }
+
+    public Mesa(String tipo, Integer capacidad, String ubicacion, String codigo) {
+        this.tipo = tipo;
+        this.capacidad = capacidad;
+        this.ubicacion = ubicacion;
+        this.codigo = codigo;
+    }
+    
+    
+    
     
     
 

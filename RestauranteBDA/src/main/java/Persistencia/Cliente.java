@@ -51,6 +51,18 @@ public class Cliente implements Serializable {
         this.reservas = reservas;
     }
 
+    public Cliente(Long id, String nombre, String telefono) {
+        this.id = id;
+        this.nombre = nombre;
+        this.telefono = telefono;
+    }
+
+    public Cliente(String nombre, String telefono) {
+        this.nombre = nombre;
+        this.telefono = telefono;
+    }
+    
+
     
     
     public Long getId() {

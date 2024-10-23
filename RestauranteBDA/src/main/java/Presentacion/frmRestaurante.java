@@ -4,22 +4,32 @@
  */
 package Presentacion;
 
+import DAO.ClienteDAO;
+import Dto.ClienteDTO;
 import Dto.ReservaDTO;
+import Negocio.ClienteBO;
 import Negocio.ReservaBO;
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author gaspa
  */
 public class frmRestaurante extends javax.swing.JFrame {
-ReservaBO reservaBO;
+    ReservaBO reservaBO;
+    ClienteBO clienteBO;
+    
     /**
      * Creates new form frmRestaurante
      */
     public frmRestaurante() {
         initComponents();
         reservaBO = new ReservaBO();
+        clienteBO = new ClienteBO();
+        
         
     }
 
@@ -49,6 +59,7 @@ ReservaBO reservaBO;
         jLabel6 = new javax.swing.JLabel();
         reservasNumPersonasTextField = new javax.swing.JTextField();
         reservasConfirmarBtn = new javax.swing.JButton();
+        reservasConfirmarBtn1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -80,11 +91,12 @@ ReservaBO reservaBO;
 
         jLabel4.setText("Lugar");
 
-        reservasLugarComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        reservasLugarComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ventana", "Terraza", "General" }));
 
         jLabel5.setText("No. Personas");
 
         reservasCostoReservaTextField.setColumns(15);
+        reservasCostoReservaTextField.setEditable(false);
 
         jLabel6.setText("Costo de reserva");
 
@@ -94,6 +106,13 @@ ReservaBO reservaBO;
         reservasConfirmarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reservasConfirmarBtnActionPerformed(evt);
+            }
+        });
+
+        reservasConfirmarBtn1.setText("Calcular costo");
+        reservasConfirmarBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reservasConfirmarBtn1ActionPerformed(evt);
             }
         });
 
@@ -110,19 +129,21 @@ ReservaBO reservaBO;
                     .addComponent(reservasTelefonoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(reservasDateTimePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(reservasConfirmarBtn)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(reservasLugarComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(reservasLugarComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(reservasConfirmarBtn1))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel5)
                                 .addComponent(reservasCostoReservaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel6)
-                                .addComponent(reservasNumPersonasTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(44, Short.MAX_VALUE))
+                                .addComponent(reservasNumPersonasTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(reservasConfirmarBtn, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +173,9 @@ ReservaBO reservaBO;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(reservasCostoReservaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(reservasConfirmarBtn)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(reservasConfirmarBtn)
+                    .addComponent(reservasConfirmarBtn1))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -225,7 +248,7 @@ ReservaBO reservaBO;
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
+                .addContainerGap(50, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jButton5)
                     .addComponent(jButton4)
@@ -255,19 +278,29 @@ ReservaBO reservaBO;
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 340));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 340));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void reservasConfirmarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservasConfirmarBtnActionPerformed
+        ClienteDTO clienteDTO = new ClienteDTO(reservasNombreTextField.getText(), reservasTelefonoTextField.getText());
+        
         try {
-            ReservaDTO reservaDTO = new ReservaDTO(Long.valueOf(1), Long.valueOf(1), reservasDateTimePicker1.getDateTimePermissive(), Integer.valueOf(reservasNumPersonasTextField.getText()), Double.parseDouble(reservasCostoReservaTextField.getText()));
-            // Llamar al BO para registrar la reserva
-            reservaBO.registrarReserva(reservaDTO);
+            //clienteBO.registrarCliente(clienteDTO);
+            //clienteDTO.setId((clienteBO.buscarClientePorTelefono(reservasTelefonoTextField.getText()).getId()));
+            ReservaDTO reservaDTO = new ReservaDTO(reservasDateTimePicker1.getDateTimePermissive(), Integer.valueOf(reservasNumPersonasTextField.getText()), Double.parseDouble(reservasCostoReservaTextField.getText()),reservasLugarComboBox.getSelectedItem().toString());
+
+            reservaBO.registrarReserva(reservaDTO, new ClienteDTO(reservasNombreTextField.getText(), reservasTelefonoTextField.getText()));
         } catch (Exception e) {
+            System.out.println("error "+e);
         }
     }//GEN-LAST:event_reservasConfirmarBtnActionPerformed
+
+    private void reservasConfirmarBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservasConfirmarBtn1ActionPerformed
+        
+        reservasCostoReservaTextField.setText(reservaBO.calcularCosto(Integer.parseInt(reservasNumPersonasTextField.getText())).toString());
+    }//GEN-LAST:event_reservasConfirmarBtn1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,6 +358,7 @@ ReservaBO reservaBO;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JButton reservasBtn;
     private javax.swing.JButton reservasConfirmarBtn;
+    private javax.swing.JButton reservasConfirmarBtn1;
     private javax.swing.JTextField reservasCostoReservaTextField;
     private com.github.lgooddatepicker.components.DateTimePicker reservasDateTimePicker1;
     private javax.swing.JComboBox<String> reservasLugarComboBox;

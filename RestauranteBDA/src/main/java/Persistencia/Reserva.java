@@ -24,6 +24,7 @@ public class Reserva implements Serializable {
     private boolean estado;
     private LocalDateTime fechaHora;
     private int numeroPersonas;
+    private String lugar;
     @ManyToOne
     @JoinColumn(name = "idCliente", nullable = false)
     private Cliente cliente;
@@ -31,7 +32,25 @@ public class Reserva implements Serializable {
     @JoinColumn(name = "idMesa", nullable = false)
     private Mesa mesa;
 
-    public Reserva(Long id, double costo, boolean estado, Date hora, LocalDateTime fechaHora, int numeroPersonas) {
+    public Reserva(Long id, double costo, boolean estado, LocalDateTime fechaHora, int numeroPersonas, Cliente cliente, Mesa mesa) {
+        this.id = id;
+        this.costo = costo;
+        this.estado = estado;
+        this.fechaHora = fechaHora;
+        this.numeroPersonas = numeroPersonas;
+        this.cliente = cliente;
+        this.mesa = mesa;
+    }
+
+    public Reserva(double costo, boolean estado, LocalDateTime fechaHora, int numeroPersonas, Cliente cliente) {
+        this.costo = costo;
+        this.estado = estado;
+        this.fechaHora = fechaHora;
+        this.numeroPersonas = numeroPersonas;
+        this.cliente = cliente;
+    }
+
+    public Reserva(Long id, double costo, boolean estado, LocalDateTime fechaHora, int numeroPersonas) {
         this.id = id;
         this.costo = costo;
         this.estado = estado;
@@ -39,14 +58,29 @@ public class Reserva implements Serializable {
         this.numeroPersonas = numeroPersonas;
     }
 
-    public Reserva(double costo, boolean estado, LocalDateTime fechaHora, int numeroPersonas) {
+    public Reserva(double costo, boolean estado, LocalDateTime fechaHora, int numeroPersonas, String lugar, Cliente cliente, Mesa mesa) {
         this.costo = costo;
         this.estado = estado;
         this.fechaHora = fechaHora;
         this.numeroPersonas = numeroPersonas;
+        this.cliente = cliente;
+        this.mesa = mesa;
+        this.lugar = lugar;
     }
+    
+    
+
+    
 
     public Reserva() {
+    }
+
+    public String getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
     }
 
     public Cliente getCliente() {

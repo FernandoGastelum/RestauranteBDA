@@ -1,0 +1,7 @@
+BOs\ClienteBO.class
+com\mycompany\restaurantenegocio\RestauranteNegocio.class
+Dto\ReservaDTO.class
+Dto\ClienteDTO.class
+Dto\MesaDTO.class
+BOs\ReservaBO.class
+BOs\MesaBO.class

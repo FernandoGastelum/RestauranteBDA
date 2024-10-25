@@ -4,11 +4,13 @@
  */
 package Presentacion;
 
+import BOs.ClienteBO;
+import BOs.ReservaBO;
 import DAO.ClienteDAO;
 import Dto.ClienteDTO;
 import Dto.ReservaDTO;
-import Negocio.ClienteBO;
-import Negocio.ReservaBO;
+
+
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.logging.Level;

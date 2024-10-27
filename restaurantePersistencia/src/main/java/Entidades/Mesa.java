@@ -28,7 +28,7 @@ public class Mesa implements Serializable {
     private Integer capacidad;
     private String ubicacion;
     private String codigo;
-    @OneToMany(mappedBy = "mesa", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "mesa", cascade = CascadeType.PERSIST)
     private List<Reserva> reservas;
 
     public Mesa() {

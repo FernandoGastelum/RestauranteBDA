@@ -5,16 +5,18 @@
 package Presentacion;
 
 import BOs.ClienteBO;
+import BOs.MesaBO;
 import BOs.ReservaBO;
 import DAO.ClienteDAO;
-import Dto.ClienteDTO;
+import DAO.MesaDAO;
+import DAO.ReservaDAO;
+import DAO.SucursalDAO;
 import Dto.ReservaDTO;
-
-
+import Dto.SucursalDTO;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
+
 
 /**
  *
@@ -23,7 +25,11 @@ import java.util.logging.Logger;
 public class frmRestaurante extends javax.swing.JFrame {
     ReservaBO reservaBO;
     ClienteBO clienteBO;
-    
+    ReservaDAO reservaDAO;
+    MesaBO mesaBO;
+    MesaDAO mesaDAO;
+    ClienteDAO clienteDAO;
+    SucursalDAO sucursalDAO;
     /**
      * Creates new form frmRestaurante
      */
@@ -31,6 +37,11 @@ public class frmRestaurante extends javax.swing.JFrame {
         initComponents();
         reservaBO = new ReservaBO();
         clienteBO = new ClienteBO();
+        reservaDAO = new ReservaDAO();
+        mesaBO = new MesaBO();
+        mesaDAO = new MesaDAO();
+        clienteDAO = new ClienteDAO();
+        sucursalDAO = new SucursalDAO();
         
         
     }
@@ -49,9 +60,6 @@ public class frmRestaurante extends javax.swing.JFrame {
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        reservasNombreTextField = new javax.swing.JTextField();
-        reservasTelefonoTextField = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         reservasDateTimePicker1 = new com.github.lgooddatepicker.components.DateTimePicker();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -62,7 +70,14 @@ public class frmRestaurante extends javax.swing.JFrame {
         reservasNumPersonasTextField = new javax.swing.JTextField();
         reservasConfirmarBtn = new javax.swing.JButton();
         reservasConfirmarBtn1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        reservasTablaClientes = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
+        AperturaTimePicker = new com.github.lgooddatepicker.components.TimePicker();
+        cierreTimePicker = new com.github.lgooddatepicker.components.TimePicker();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -81,13 +96,7 @@ public class frmRestaurante extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setText("Nombre Completo");
-
-        reservasNombreTextField.setColumns(15);
-
-        reservasTelefonoTextField.setColumns(15);
-
-        jLabel2.setText("Telefono");
+        jLabel1.setText("Cliente");
 
         jLabel3.setText("Fecha y Hora");
 
@@ -118,6 +127,27 @@ public class frmRestaurante extends javax.swing.JFrame {
             }
         });
 
+        reservasTablaClientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Nombre", "Telefono"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(reservasTablaClientes);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -125,78 +155,108 @@ public class frmRestaurante extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(reservasNombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(reservasTelefonoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(reservasDateTimePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(reservasConfirmarBtn))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(reservasDateTimePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
+                                .addComponent(reservasCostoReservaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(reservasConfirmarBtn1))
+                            .addComponent(jLabel6)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(reservasLugarComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4))
-                                .addGap(25, 25, 25))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(reservasConfirmarBtn1)
-                                .addGap(18, 18, 18)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(reservasCostoReservaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)
-                            .addComponent(reservasNumPersonasTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(reservasConfirmarBtn)))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(reservasNumPersonasTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 9, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(reservasNombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(reservasTelefonoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(reservasDateTimePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(reservasLugarComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(reservasNumPersonasTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(reservasCostoReservaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(reservasConfirmarBtn1)
-                    .addComponent(reservasConfirmarBtn))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addComponent(reservasCostoReservaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(reservasConfirmarBtn1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(reservasConfirmarBtn)
+                .addGap(18, 18, 18))
         );
 
         jTabbedPane2.addTab("tab1", jPanel2);
+
+        jLabel2.setText("Hora de apertura");
+
+        jLabel7.setText("Hora de cierre");
+
+        jButton6.setText("anadir sucursal temporal");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jButton6)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AperturaTimePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cierreTimePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addGap(65, 65, 65))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 305, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AperturaTimePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cierreTimePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton6)
+                .addContainerGap(289, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("tab1", jPanel3);
@@ -205,11 +265,11 @@ public class frmRestaurante extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 356, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 305, Short.MAX_VALUE)
+            .addGap(0, 415, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("tab1", jPanel4);
@@ -218,11 +278,11 @@ public class frmRestaurante extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 356, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 305, Short.MAX_VALUE)
+            .addGap(0, 415, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("tab1", jPanel5);
@@ -231,16 +291,21 @@ public class frmRestaurante extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 356, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 305, Short.MAX_VALUE)
+            .addGap(0, 415, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("tab1", jPanel6);
 
         reservasBtn.setText("Reservas");
+        reservasBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reservasBtnActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Mesas");
 
@@ -255,7 +320,7 @@ public class frmRestaurante extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jButton5)
                     .addComponent(jButton4)
@@ -263,14 +328,15 @@ public class frmRestaurante extends javax.swing.JFrame {
                     .addComponent(jButton2)
                     .addComponent(reservasBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jTabbedPane2)
+                .addContainerGap())
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton2, jButton3, jButton4, jButton5, reservasBtn});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+            .addComponent(jTabbedPane2)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addComponent(reservasBtn)
@@ -285,20 +351,34 @@ public class frmRestaurante extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 340));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void reservasConfirmarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservasConfirmarBtnActionPerformed
-        ClienteDTO clienteDTO = new ClienteDTO(reservasNombreTextField.getText(), reservasTelefonoTextField.getText());
-        
+        //ClienteDTO clienteDTO = new ClienteDTO(reservasNombreTextField.getText(), reservasTelefonoTextField.getText());
+        DefaultTableModel model = (DefaultTableModel) reservasTablaClientes.getModel();
+        int selectedRow = reservasTablaClientes.getSelectedRow();
+        System.out.println(reservasLugarComboBox.getSelectedItem().toString());
+        long idMesa = mesaDAO.buscarMesaGeneral(Integer.parseInt(reservasNumPersonasTextField.getText()), reservasLugarComboBox.getSelectedItem().toString()).getId();
+        System.out.println("idMesa :"+idMesa);
+        long idCliente = clienteDAO.buscarClientePorTelefono(reservasTablaClientes.getValueAt(selectedRow, 1).toString()).getId();
+        System.out.println("idCliente"+idCliente);
         try {
             //clienteBO.registrarCliente(clienteDTO);
             //clienteDTO.setId((clienteBO.buscarClientePorTelefono(reservasTelefonoTextField.getText()).getId()));
-            ReservaDTO reservaDTO = new ReservaDTO(reservasDateTimePicker1.getDateTimePermissive(), Integer.valueOf(reservasNumPersonasTextField.getText()), Double.parseDouble(reservasCostoReservaTextField.getText()),reservasLugarComboBox.getSelectedItem().toString());
+            
+            ReservaDTO reservaDTO = new ReservaDTO(
+                    idCliente, 
+                    idMesa, 
+                    reservasDateTimePicker1.getDateTimePermissive(), 
+                    Integer.parseInt(reservasNumPersonasTextField.getText()), 
+                    Double.parseDouble(reservasCostoReservaTextField.getText()),
+                    reservasLugarComboBox.getSelectedItem().toString());
+            reservaDAO.registrarReserva(reservaDTO);
 
-            reservaBO.registrarReserva(reservaDTO, new ClienteDTO(reservasNombreTextField.getText(), reservasTelefonoTextField.getText()));
+            //reservaBO.registrarReserva(reservaDTO, new ClienteDTO(reservasNombreTextField.getText(), reservasTelefonoTextField.getText()));
         } catch (Exception e) {
             System.out.println("error "+e);
         }
@@ -308,6 +388,18 @@ public class frmRestaurante extends javax.swing.JFrame {
         
         reservasCostoReservaTextField.setText(reservaBO.calcularCosto(Integer.parseInt(reservasNumPersonasTextField.getText())).toString());
     }//GEN-LAST:event_reservasConfirmarBtn1ActionPerformed
+
+    private void reservasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservasBtnActionPerformed
+        DefaultTableModel model = (DefaultTableModel) reservasTablaClientes.getModel();
+        clienteBO.limpiarTabla(model);
+        clienteBO.cargarTablaClientes(model);
+        
+    }//GEN-LAST:event_reservasBtnActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        SucursalDTO sucursalDTO = new SucursalDTO("sucursalParis2", AperturaTimePicker.getTime(), cierreTimePicker.getTime());
+        sucursalDAO.registrarSucursal(sucursalDTO);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -345,23 +437,28 @@ public class frmRestaurante extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.github.lgooddatepicker.components.TimePicker AperturaTimePicker;
     private com.github.lgooddatepicker.components.CalendarPanel calendarPanel1;
+    private com.github.lgooddatepicker.components.TimePicker cierreTimePicker;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JButton reservasBtn;
     private javax.swing.JButton reservasConfirmarBtn;
@@ -369,8 +466,7 @@ public class frmRestaurante extends javax.swing.JFrame {
     private javax.swing.JTextField reservasCostoReservaTextField;
     private com.github.lgooddatepicker.components.DateTimePicker reservasDateTimePicker1;
     private javax.swing.JComboBox<String> reservasLugarComboBox;
-    private javax.swing.JTextField reservasNombreTextField;
     private javax.swing.JTextField reservasNumPersonasTextField;
-    private javax.swing.JTextField reservasTelefonoTextField;
+    private javax.swing.JTable reservasTablaClientes;
     // End of variables declaration//GEN-END:variables
 }

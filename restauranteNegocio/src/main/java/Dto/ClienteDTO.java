@@ -27,6 +27,14 @@ public class ClienteDTO {
         this.telefono = telefono;
     }
 
+    public ClienteDTO(long id, String nombre, String telefono) {
+        this.id = id;
+        this.nombre = nombre;
+        this.telefono = telefono;
+    }
+    
+    
+
     public Cliente getCliente() {
         return cliente;
     }

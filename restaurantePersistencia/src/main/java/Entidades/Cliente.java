@@ -13,12 +13,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author gaspa
  */
 @Entity
+@Table(name="cliente")
 public class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,7 +32,7 @@ public class Cliente implements Serializable {
     private String telefono;  
     private String correoElectronico;
     
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.PERSIST)
     private List<Reserva> reservas;
 
     public Cliente() {

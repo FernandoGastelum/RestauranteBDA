@@ -54,12 +54,24 @@ public class MesaBO {
         }
     }
 
-    private String generarCodigoMesa(String ubicacion, int capacidad, int numero) {
+    public String generarCodigoMesa(String ubicacion, int capacidad, int numero) {
 
         String codigoUbicacion = ubicacion.substring(0, 3).toUpperCase();
 
         String numeroMesa = String.format("%03d", numero);
 
         return codigoUbicacion + "-" + capacidad + "-" + numeroMesa;
+    }
+    public String asignarTipoMesa(int numeroPersonas){
+        switch (numeroPersonas) {
+            case 1,2:
+                return "Pequeña";
+            case 3,4:
+                return "Mediana";
+            case 5,6,7,8:
+                return "Grande";
+            default:
+                throw new AssertionError();
+        }
     }
 }

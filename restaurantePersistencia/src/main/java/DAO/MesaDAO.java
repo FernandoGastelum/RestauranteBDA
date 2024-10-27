@@ -2,6 +2,7 @@ package DAO;
 
 import BOs.MesaBO;
 import Entidades.Mesa;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -60,6 +61,15 @@ public class MesaDAO {
         
         return query.getSingleResult();
         
+    }
+    public List<Mesa> obtenerTodasLasMesas() {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        String queryJpql = "SELECT m FROM Mesa m";
+        TypedQuery query = em.createQuery(queryJpql, Mesa.class);
+        List<Mesa> mesas = query.getResultList();
+        em.getTransaction().commit();
+        return mesas;
     }
 
     public void cerrar() {

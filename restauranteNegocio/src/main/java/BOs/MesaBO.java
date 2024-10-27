@@ -8,6 +8,7 @@ import javax.persistence.Persistence;
 import DAO.MesaDAO;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 public class MesaBO {
 
@@ -72,6 +73,23 @@ public class MesaBO {
                 return "Grande";
             default:
                 throw new AssertionError();
+        }
+    }
+    public void limpiarTabla(DefaultTableModel model){
+        for (int i = 0; i < model.getRowCount() ; i++) {
+            model.removeRow(i);
+            i=i-1;
+        }
+    }
+    public void cargarTablaMesa(DefaultTableModel model){
+        java.util.List<Mesa> listaMesas = mesaDAO.obtenerTodasLasMesas();
+        
+        for (Mesa mesas : listaMesas) {
+        model.addRow(new Object[]{
+            mesas.getCodigo(),
+            mesas.getTipo(),
+            mesas.getUbicacion()
+            });
         }
     }
 }

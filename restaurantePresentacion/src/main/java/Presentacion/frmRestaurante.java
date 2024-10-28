@@ -120,6 +120,7 @@ public class frmRestaurante extends javax.swing.JFrame {
         reportesjTable = new javax.swing.JTable();
         reportesFiltrarBtn = new javax.swing.JButton();
         reportesVistaPreviaBtn = new javax.swing.JButton();
+        reportesVistaPreviaBtn1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
         AperturaTimePicker = new com.github.lgooddatepicker.components.TimePicker();
@@ -151,11 +152,11 @@ public class frmRestaurante extends javax.swing.JFrame {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 656, Short.MAX_VALUE)
+            .addGap(0, 622, Short.MAX_VALUE)
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
+            .addGap(0, 499, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("", jPanel8);
@@ -172,17 +173,20 @@ public class frmRestaurante extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         reservasLugarComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ventana", "Terraza", "General" }));
+        reservasLugarComboBox.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jLabel5.setText("No. Personas");
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         reservasCostoReservaTextField.setColumns(15);
         reservasCostoReservaTextField.setEditable(false);
+        reservasCostoReservaTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jLabel6.setText("Costo de reserva");
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         reservasNumPersonasTextField.setColumns(15);
+        reservasNumPersonasTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         reservasConfirmarBtn.setText("Confirmar");
         reservasConfirmarBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -192,6 +196,7 @@ public class frmRestaurante extends javax.swing.JFrame {
         });
 
         reservasConfirmarBtn1.setText("Calcular costo");
+        reservasConfirmarBtn1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         reservasConfirmarBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reservasConfirmarBtn1ActionPerformed(evt);
@@ -226,7 +231,7 @@ public class frmRestaurante extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(reservasConfirmarBtn))
@@ -262,7 +267,7 @@ public class frmRestaurante extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(reservasDateTimePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
@@ -316,13 +321,16 @@ public class frmRestaurante extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         mesasTipoMesaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pequeña", "Mediana", "Grande", " " }));
+        mesasTipoMesaComboBox.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         mesasUbicacionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Terraza", "Ventana", "General" }));
+        mesasUbicacionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jLabel11.setText("Cantidad");
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         mesasCantidadTxt.setColumns(10);
+        mesasCantidadTxt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         mesasCantidadTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mesasCantidadTxtActionPerformed(evt);
@@ -330,6 +338,7 @@ public class frmRestaurante extends javax.swing.JFrame {
         });
 
         agregarMesasBtn.setText("Agregar Mesas");
+        agregarMesasBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         agregarMesasBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarMesasBtnActionPerformed(evt);
@@ -343,28 +352,28 @@ public class frmRestaurante extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel8)
-                                    .addComponent(jLabel9)
+                                    .addComponent(agregarMesasBtn)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(98, 98, 98)
+                                        .addComponent(jLabel9)
+                                        .addGap(110, 110, 110)
                                         .addComponent(jLabel10)))
-                                .addGap(42, 42, 42)
-                                .addComponent(jLabel11))
-                            .addComponent(agregarMesasBtn)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(mesasTipoMesaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(137, 137, 137)
-                                .addComponent(mesasCantidadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(98, 98, 98)
-                                .addComponent(mesasUbicacionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addGap(83, 83, 83)
+                                .addComponent(jLabel11)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(mesasTipoMesaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(mesasUbicacionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(mesasCantidadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(137, 137, 137))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -385,7 +394,7 @@ public class frmRestaurante extends javax.swing.JFrame {
                     .addComponent(mesasCantidadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addComponent(agregarMesasBtn)
-                .addContainerGap(219, Short.MAX_VALUE))
+                .addContainerGap(210, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("", jPanel3);
@@ -461,8 +470,8 @@ public class frmRestaurante extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -478,7 +487,7 @@ public class frmRestaurante extends javax.swing.JFrame {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -503,11 +512,11 @@ public class frmRestaurante extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 656, Short.MAX_VALUE)
+            .addGap(0, 622, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
+            .addGap(0, 499, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("", jPanel6);
@@ -552,7 +561,6 @@ public class frmRestaurante extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        reportesjTable.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jScrollPane4.setViewportView(reportesjTable);
 
         reportesFiltrarBtn.setText("Filtrar");
@@ -571,6 +579,14 @@ public class frmRestaurante extends javax.swing.JFrame {
             }
         });
 
+        reportesVistaPreviaBtn1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        reportesVistaPreviaBtn1.setText("Vista previa reporte general");
+        reportesVistaPreviaBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportesVistaPreviaBtn1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -580,7 +596,7 @@ public class frmRestaurante extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addComponent(jLabel13)
                                 .addGap(0, 0, Short.MAX_VALUE)))
@@ -598,8 +614,9 @@ public class frmRestaurante extends javax.swing.JFrame {
                                     .addComponent(reportesDatePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel15)))
                             .addComponent(reportesFiltrarBtn)
-                            .addComponent(reportesVistaPreviaBtn))
-                        .addGap(0, 346, Short.MAX_VALUE))))
+                            .addComponent(reportesVistaPreviaBtn)
+                            .addComponent(reportesVistaPreviaBtn1))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -624,7 +641,9 @@ public class frmRestaurante extends javax.swing.JFrame {
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(reportesVistaPreviaBtn)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(reportesVistaPreviaBtn1)
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("", jPanel7);
@@ -684,15 +703,15 @@ public class frmRestaurante extends javax.swing.JFrame {
                         .addGap(115, 115, 115))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
-                                    .addComponent(AperturaTimePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(AperturaTimePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(31, 31, 31)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
-                                    .addComponent(cierreTimePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(cierreTimePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap())
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -719,14 +738,15 @@ public class frmRestaurante extends javax.swing.JFrame {
                         .addComponent(cierreTimePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addComponent(jButton8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
                 .addComponent(jButton6)
-                .addGap(23, 23, 23))
+                .addGap(34, 34, 34))
         );
 
         jTabbedPane2.addTab("", jPanel4);
 
         reservasBtn.setText("Reservas");
+        reservasBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         reservasBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reservasBtnActionPerformed(evt);
@@ -734,6 +754,7 @@ public class frmRestaurante extends javax.swing.JFrame {
         });
 
         mesasBtn.setText("Mesas");
+        mesasBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         mesasBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mesasBtnActionPerformed(evt);
@@ -741,6 +762,7 @@ public class frmRestaurante extends javax.swing.JFrame {
         });
 
         cancelacionesBtn.setText("Cancelaciones");
+        cancelacionesBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cancelacionesBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelacionesBtnActionPerformed(evt);
@@ -748,6 +770,7 @@ public class frmRestaurante extends javax.swing.JFrame {
         });
 
         consultasBtn.setText("Consultas");
+        consultasBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         consultasBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultasBtnActionPerformed(evt);
@@ -755,6 +778,7 @@ public class frmRestaurante extends javax.swing.JFrame {
         });
 
         reportesBtn.setText("Reportes");
+        reportesBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         reportesBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reportesBtnActionPerformed(evt);
@@ -762,13 +786,14 @@ public class frmRestaurante extends javax.swing.JFrame {
         });
 
         sucursalesBtn.setText("Sucursales");
+        sucursalesBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         sucursalesBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sucursalesBtnActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Agregar Datos");
+        jButton1.setText("Agregar Clientes");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -781,16 +806,15 @@ public class frmRestaurante extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(reportesBtn)
-                            .addComponent(consultasBtn)
-                            .addComponent(cancelacionesBtn)
-                            .addComponent(mesasBtn)
-                            .addComponent(reservasBtn))
-                        .addComponent(sucursalesBtn, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(jButton1))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                        .addComponent(reportesBtn)
+                        .addComponent(consultasBtn)
+                        .addComponent(cancelacionesBtn)
+                        .addComponent(mesasBtn)
+                        .addComponent(reservasBtn))
+                    .addComponent(sucursalesBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane2)
                 .addContainerGap())
@@ -800,7 +824,6 @@ public class frmRestaurante extends javax.swing.JFrame {
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addComponent(reservasBtn)
@@ -816,13 +839,16 @@ public class frmRestaurante extends javax.swing.JFrame {
                 .addComponent(sucursalesBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(78, 78, 78))
+                .addGap(58, 58, 58))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jTabbedPane2)
+                .addContainerGap())
         );
 
         jTabbedPane2.getAccessibleContext().setAccessibleName("");
         jTabbedPane2.getAccessibleContext().setAccessibleDescription("");
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 500));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 540));
 
         pack();
         setLocationRelativeTo(null);
@@ -909,6 +935,9 @@ public class frmRestaurante extends javax.swing.JFrame {
 
     private void reportesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesBtnActionPerformed
         jTabbedPane2.setSelectedIndex(5);
+        DefaultTableModel model = (DefaultTableModel) reportesjTable.getModel();
+        reservaBO.limpiarTabla(model);
+        reservaBO.cargarTablaReservasGeneral(model);
     }//GEN-LAST:event_reportesBtnActionPerformed
 
     private void sucursalesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sucursalesBtnActionPerformed
@@ -918,6 +947,7 @@ public class frmRestaurante extends javax.swing.JFrame {
     private void reportesVistaPreviaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesVistaPreviaBtnActionPerformed
         jDialogReporte reporte = new jDialogReporte(this, rootPaneCheckingEnabled);
         DefaultTableModel model = (DefaultTableModel) reporte.reportejTable.getModel();
+        
         reservaBO.limpiarTabla(model);
         reservaBO.cargarTablaReservas(model, reportesDatePicker1.getDate(),
                 reportesDatePicker2.getDate(), 
@@ -931,6 +961,7 @@ public class frmRestaurante extends javax.swing.JFrame {
     }//GEN-LAST:event_reportesVistaPreviaBtnActionPerformed
 
     private void cancelacionesConfirmarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelacionesConfirmarBtnActionPerformed
+        
         int selectedRow = cancelacionesTablaReservas.getSelectedRow();
         Reserva Reserva = reservaDAO.buscarReservaPorTelefono(cancelacionesTablaReservas.getValueAt(selectedRow, 1).toString());
         
@@ -980,6 +1011,16 @@ public class frmRestaurante extends javax.swing.JFrame {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void reportesVistaPreviaBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesVistaPreviaBtn1ActionPerformed
+        jDialogReporte reporte = new jDialogReporte(this, rootPaneCheckingEnabled);
+        DefaultTableModel model = (DefaultTableModel) reporte.reportejTable.getModel();
+        reservaBO.limpiarTabla(model);
+        reservaBO.cargarTablaReservasGeneral(model);
+        reporte.nombreRestauranteJLabel.setText("Restaurante BDA");
+        reporte.fechaJLabel.setText(LocalDate.now().toString());
+        reporte.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_reportesVistaPreviaBtn1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1076,6 +1117,7 @@ public class frmRestaurante extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> reportesTipoMesaComboBox;
     private javax.swing.JComboBox<String> reportesUbicacionComboBox;
     private javax.swing.JButton reportesVistaPreviaBtn;
+    private javax.swing.JButton reportesVistaPreviaBtn1;
     private javax.swing.JTable reportesjTable;
     private javax.swing.JButton reservasBtn;
     private javax.swing.JButton reservasConfirmarBtn;

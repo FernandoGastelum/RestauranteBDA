@@ -22,6 +22,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -47,6 +48,7 @@ public class ReservaDAO {
         // Verificar disponibilidad de la mesa
         boolean disponible = verificarDisponibilidadMesa(reservaDTO.getIdMesa(), reservaDTO.getFechaHora());
         if (!disponible) {
+            JOptionPane.showMessageDialog(null, "La mesa no está disponible en la fecha y hora seleccionadas.", "Error", JOptionPane.INFORMATION_MESSAGE);
             throw new Exception("La mesa no está disponible en la fecha y hora seleccionadas.");
         }
 
@@ -68,7 +70,7 @@ public class ReservaDAO {
         em.getTransaction().begin();
         em.persist(reserva);
         em.getTransaction().commit();
-        System.out.println("Reserva ");
+        JOptionPane.showMessageDialog(null, "Se ha registrado una reserva", "Éxito", JOptionPane.INFORMATION_MESSAGE);
         
     }
     

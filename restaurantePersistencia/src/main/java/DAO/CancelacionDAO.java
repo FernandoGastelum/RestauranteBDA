@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,7 +27,8 @@ public class CancelacionDAO {
         em.getTransaction().begin();
         em.persist(cancelacion);
         em.getTransaction().commit();
-        System.out.println("Cancelacion creada");
+        JOptionPane.showMessageDialog(null, "La cancelacion ha sido creada con exito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        
     }
     public List<Cancelacion> buscarCancelacionesPorReservas(Long id){
         EntityManager em = emf.createEntityManager();

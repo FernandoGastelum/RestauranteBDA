@@ -50,28 +50,52 @@ public class ReservaBO {
     }
     
     public void cargarTablaReservas(DefaultTableModel model, LocalDate fecha1, LocalDate fecha2, String tipo, String ubicacion) {
-    java.util.List<Reserva> listaReservas = reservaDAO.obtenerReservasReportes(fecha1, fecha2, tipo, ubicacion);
+        java.util.List<Reserva> listaReservas = reservaDAO.obtenerReservasReportes(fecha1, fecha2, tipo, ubicacion);
 
-    for (Reserva reserva : listaReservas) {
-        // Verificar si existe una cancelación para la reserva
-        Cancelacion cancelacion = reservaDAO.obtenerCancelacionPorReserva(reserva.getId());
+        for (Reserva reserva : listaReservas) {
+            // Verificar si existe una cancelación para la reserva
+            Cancelacion cancelacion = reservaDAO.obtenerCancelacionPorReserva(reserva.getId());
 
-        // Comprobar si hay una cancelación
-        boolean hayCancelacion = cancelacion != null;
-        Double multa = hayCancelacion ? cancelacion.getMulta() : 0.0; // Asignar la multa o 0.0 si no hay cancelación
+            // Comprobar si hay una cancelación
+            boolean hayCancelacion = cancelacion != null;
+            Double multa = hayCancelacion ? cancelacion.getMulta() : 0.0; // Asignar la multa o 0.0 si no hay cancelación
 
-        model.addRow(new Object[]{
-            reserva.getCliente().getNombre(),
-            reserva.getFechaHora(),
-            reserva.getNumeroPersonas(),
-            reserva.getMesa().getTipo(),
-            reserva.getMesa().getUbicacion(),
-            reserva.getCosto(),
-            hayCancelacion ? "Sí" : "No", // Mostrar si hay cancelación
-            multa // Mostrar la multa
-        });
+            model.addRow(new Object[]{
+                reserva.getCliente().getNombre(),
+                reserva.getFechaHora(),
+                reserva.getNumeroPersonas(),
+                reserva.getMesa().getTipo(),
+                reserva.getMesa().getUbicacion(),
+                reserva.getCosto(),
+                hayCancelacion ? "Sí" : "No", // Mostrar si hay cancelación
+                multa // Mostrar la multa
+            });
+        }
     }
-}
+    
+    public void cargarTablaReservasGeneral(DefaultTableModel model) {
+        java.util.List<Reserva> listaReservas = reservaDAO.obtenerTodasLasReservas();
+
+        for (Reserva reserva : listaReservas) {
+            // Verificar si existe una cancelación para la reserva
+            Cancelacion cancelacion = reservaDAO.obtenerCancelacionPorReserva(reserva.getId());
+
+            // Comprobar si hay una cancelación
+            boolean hayCancelacion = cancelacion != null;
+            Double multa = hayCancelacion ? cancelacion.getMulta() : 0.0; // Asignar la multa o 0.0 si no hay cancelación
+
+            model.addRow(new Object[]{
+                reserva.getCliente().getNombre(),
+                reserva.getFechaHora(),
+                reserva.getNumeroPersonas(),
+                reserva.getMesa().getTipo(),
+                reserva.getMesa().getUbicacion(),
+                reserva.getCosto(),
+                hayCancelacion ? "Sí" : "No", // Mostrar si hay cancelación
+                multa // Mostrar la multa
+            });
+        }
+    }
     
     
 }

@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -125,7 +126,7 @@ public class ReporteBO {
             }
             // Guardar el PDF en la ubicación seleccionada
             documento.save(fileToSave);
-            System.out.println("PDF generado exitosamente en: " + fileToSave.getAbsolutePath());
+            JOptionPane.showMessageDialog(null, "PDF generado exitosamente en: "+ fileToSave.getAbsolutePath(), "Éxito", JOptionPane.INFORMATION_MESSAGE);
         } else {
             System.out.println("Operación de guardado cancelada.");
         }

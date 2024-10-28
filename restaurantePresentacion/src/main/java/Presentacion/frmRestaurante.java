@@ -15,6 +15,7 @@ import DAO.ReservaDAO;
 import DAO.SucursalDAO;
 import Dto.CancelacionDTO;
 import Dto.ClienteDTO;
+import Dto.ConsultaDTO;
 import Dto.ReservaDTO;
 import Dto.SucursalDTO;
 import Entidades.Reserva;
@@ -132,7 +133,7 @@ public class frmRestaurante extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        nombreClienteTextField = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -747,20 +748,20 @@ public class frmRestaurante extends javax.swing.JFrame {
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel18.setText("Consultas");
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel18.setText("Consultas");
 
-        jLabel19.setText("Nombre");
         jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel19.setText("Nombre");
 
-        jLabel20.setText("Fecha");
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel20.setText("Fecha");
 
-        jLabel21.setText("Ubicacion");
         jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel21.setText("Ubicacion");
 
-        jLabel22.setText("Tipo de Mesa");
         jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel22.setText("Tipo de Mesa");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "General", "Terraza", "Ventana" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -778,8 +779,8 @@ public class frmRestaurante extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Buscar");
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton3.setText("Buscar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3BotonBuscarConsultas(evt);
@@ -821,7 +822,7 @@ public class frmRestaurante extends javax.swing.JFrame {
                                     .addGroup(jPanel9Layout.createSequentialGroup()
                                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(82, 82, 82)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(nombreClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel9Layout.createSequentialGroup()
                                         .addComponent(jLabel21)
                                         .addGap(133, 133, 133)
@@ -847,7 +848,7 @@ public class frmRestaurante extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombreClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
@@ -1152,7 +1153,7 @@ public class frmRestaurante extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2BotonLimpiarDatos
 
     private void jButton3BotonBuscarConsultas(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3BotonBuscarConsultas
-        // TODO add your handling code here:
+    
     }//GEN-LAST:event_jButton3BotonBuscarConsultas
 
     /**
@@ -1247,12 +1248,12 @@ public class frmRestaurante extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton mesasBtn;
     private javax.swing.JTextField mesasCantidadTxt;
     private javax.swing.JTable mesasTablaMesas;
     private javax.swing.JComboBox<String> mesasTipoMesaComboBox;
     private javax.swing.JComboBox<String> mesasUbicacionComboBox;
+    private javax.swing.JTextField nombreClienteTextField;
     private javax.swing.JScrollPane panelTablaConsultas;
     private javax.swing.JButton reportesBtn;
     private com.github.lgooddatepicker.components.DatePicker reportesDatePicker1;

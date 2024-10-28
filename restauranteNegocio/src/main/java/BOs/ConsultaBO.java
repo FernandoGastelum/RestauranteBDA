@@ -22,6 +22,15 @@ public class ConsultaBO {
 
         // Carga las reservas en el modelo de la tabla
         for (Reserva reserva : listaReservas) {
+            // Filtra las reservas por el nombre del cliente
+            if (nombre != null && !nombre.isEmpty() && !reserva.getCliente().getNombre().toLowerCase().contains(nombre.toLowerCase())) {
+                continue; // Salta si no coincide el nombre
+            }
+            if (telefono != null && !telefono.isEmpty() && !reserva.getCliente().getTelefono().equals(telefono)) {
+                continue; // Salta si no coincide el teléfono
+            }
+
+            // Agrega la reserva al modelo de la tabla
             model.addRow(new Object[]{
                 reserva.getCliente().getNombre(),
                 reserva.getCliente().getTelefono(),
@@ -41,4 +50,5 @@ public class ConsultaBO {
         }
     }
 }
+
 

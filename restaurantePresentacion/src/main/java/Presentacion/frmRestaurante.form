@@ -1113,7 +1113,7 @@
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jComboBox1" min="-2" pref="107" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
-                                                  <Component id="jTextField1" min="-2" pref="107" max="-2" attributes="0"/>
+                                                  <Component id="nombreClienteTextField" min="-2" pref="107" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
@@ -1150,7 +1150,7 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jComboBox1" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                              <Component id="jTextField1" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                              <Component id="nombreClienteTextField" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -1180,7 +1180,7 @@
                     <Property name="text" type="java.lang.String" value="Consultas"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField1">
+                <Component class="javax.swing.JTextField" name="nombreClienteTextField">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel19">
                   <Properties>

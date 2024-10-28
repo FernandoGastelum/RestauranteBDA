@@ -40,6 +40,7 @@ public class jDialogReporte extends javax.swing.JDialog {
         generarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
         reportejTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -106,6 +107,7 @@ public class jDialogReporte extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void generarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarBtnActionPerformed

@@ -25,21 +25,26 @@ import javax.persistence.TypedQuery;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author gaspa
+ * La clase ReservaDAO gestiona las operaciones de acceso a datos relacionadas con las reservas,
+ * incluyendo la creación, búsqueda, actualización y generación de reportes. Utiliza JPA 
+ * (Java Persistence API) para la interacción con la base de datos.
  */
 public class ReservaDAO {
     @PersistenceContext
     private EntityManager em;
     ReservaBO reservaBO;
     SucursalDAO sucursalDAO;
-
+    /**
+     * Constructor de la clase ReservaDAO.
+     */
     public ReservaDAO() {
-        
     }
-    
-    
-    
+    /**
+     * Registra una nueva reserva en la base de datos, verificando primero la disponibilidad de la mesa.
+     *
+     * @param reservaDTO Objeto de tipo ReservaDTO que contiene los datos de la reserva a registrar.
+     * @throws Exception Si la mesa no está disponible en la fecha y hora seleccionadas o si ocurre un error en la transacción.
+     */
     public void registrarReserva(ReservaDTO reservaDTO) throws Exception {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu_restaurante");
         EntityManager em = emf.createEntityManager();
@@ -146,16 +151,26 @@ public class ReservaDAO {
 
        // Retornar verdadero si no hay reservas conflictivas; falso de lo contrario
        return reservas.isEmpty();
-   }
-    
+    }
+    /**
+     * Obtiene una lista de reservas para un cliente específico según su ID.
+     *
+     * @param idCliente ID del cliente cuyas reservas se desean obtener.
+     * @return Lista de objetos Reserva pertenecientes al cliente especificado.
+     */
     public List<Reserva> obtenerReservasPorCliente(Long idCliente) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu_restaurante");
         EntityManager em = emf.createEntityManager();
-        return em.createQuery("SELECT r FROM Reserva r WHERE r.cliente.idCliente = :idCliente", Reserva.class)
+        return em.createQuery("SELECT r FROM Reserva r WHERE r.id = :idCliente", Reserva.class)
                 .setParameter("idCliente", idCliente)
                 .getResultList();
     }
-    
+    /**
+     * Busca una reserva en la base de datos según el teléfono del cliente.
+     *
+     * @param telefono Número de teléfono del cliente asociado a la reserva.
+     * @return Objeto Reserva correspondiente al cliente con el teléfono proporcionado.
+     */
     public Reserva buscarReservaPorTelefono(String telefono) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu_restaurante");
         EntityManager em = emf.createEntityManager();
@@ -163,7 +178,15 @@ public class ReservaDAO {
                 .setParameter("telefono", telefono)
                 .getSingleResult();
     }
-    
+    /**
+     * Genera un reporte de reservas filtrado por rango de fechas, tipo de mesa y ubicación.
+     *
+     * @param fecha1    Fecha de inicio del rango de fechas.
+     * @param fecha2    Fecha de fin del rango de fechas.
+     * @param tipo      Tipo de mesa.
+     * @param ubicacion Ubicación de la mesa.
+     * @return Lista de objetos Reserva que cumplen con los criterios de búsqueda.
+     */
     public List<Reserva> obtenerReservasReportes(LocalDate fecha1, LocalDate fecha2, String tipo, String ubicacion){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu_restaurante");
         EntityManager em = emf.createEntityManager();
@@ -177,7 +200,12 @@ public class ReservaDAO {
         List<Reserva> reservas = query.getResultList();
         return reservas;
     }
-    
+    /**
+     * Obtiene la cancelación asociada a una reserva específica.
+     *
+     * @param idReserva ID de la reserva cuya cancelación se desea obtener.
+     * @return Objeto Cancelacion correspondiente a la reserva, o null si no tiene una cancelación.
+     */
     public Cancelacion obtenerCancelacionPorReserva(Long idReserva) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu_restaurante");
         EntityManager em = emf.createEntityManager();
@@ -193,17 +221,32 @@ public class ReservaDAO {
             emf.close();
         }
     }
+    /**
+     * Obtiene una lista de todas las reservas registradas en la base de datos.
+     *
+     * @return Lista de todos los objetos Reserva en la base de datos.
+     */
     public List<Reserva> obtenerTodasLasReservas(){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu_restaurante");
         EntityManager em = emf.createEntityManager();
         return em.createQuery("SELECT r FROM Reserva r",Reserva.class).getResultList();
     }
+    /**
+     * Obtiene una lista de todas las reservas disponibles en la base de datos.
+     *
+     * @return Lista de todos los objetos Reserva con estado disponible.
+     */
     public List<Reserva> obtenerTodasLasReservasDisponibles(){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu_restaurante");
         EntityManager em = emf.createEntityManager();
         return em.createQuery("SELECT r FROM Reserva r WHERE r.estado = 1",Reserva.class).getResultList();
     }
-    
+    /**
+     * Cambia el estado de una reserva específica a no disponible.
+     *
+     * @param idReserva ID de la reserva cuyo estado se desea cambiar.
+     * @throws Exception Si no se encuentra una reserva con el ID especificado o si ocurre un error en la transacción.
+     */
     public void cambiarEstadoReserva(Long idReserva) throws Exception {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu_restaurante");
         EntityManager em = emf.createEntityManager();

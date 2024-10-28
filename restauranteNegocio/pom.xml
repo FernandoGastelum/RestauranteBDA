@@ -25,4 +25,18 @@
         <maven.compiler.target>17</maven.compiler.target>
         <exec.mainClass>com.mycompany.restaurantenegocio.RestauranteNegocio</exec.mainClass>
     </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.6.3</version>
+                <configuration>
+                    <quiet>true</quiet> <!-- Para minimizar advertencias no críticas -->
+                    <failOnError>false</failOnError> <!-- Ignora errores que no son críticos -->
+                    <show>protected</show> <!-- Configura el nivel de visibilidad -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

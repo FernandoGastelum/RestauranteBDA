@@ -16,8 +16,9 @@ import javax.persistence.TypedQuery;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author gaspa
+ * La clase ClienteDAO gestiona las operaciones de acceso a datos relacionadas con los clientes,
+ * permitiendo realizar operaciones CRUD (crear y consultar) en la base de datos. Utiliza JPA
+ * (Java Persistence API) para la interacción con la base de datos.
  */
 public class ClienteDAO {
     @PersistenceContext
@@ -25,7 +26,13 @@ public class ClienteDAO {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu_restaurante");
     
 
-    // Método para crear un nuevo cliente
+    /**
+     * Registra un nuevo cliente en la base de datos.
+     *
+     * @param clienteDTO Objeto de tipo ClienteDTO que contiene la información del cliente
+     *                   que se desea registrar. Debe incluir el nombre y el teléfono del cliente.
+     * @throws Exception Si ocurre algún error durante la transacción de registro.
+     */
     public void registrarCliente(ClienteDTO clienteDTO) throws Exception {
         EntityManager em = emf.createEntityManager();
         Cliente cliente = new Cliente(clienteDTO.getNombre(),clienteDTO.getTelefono());
@@ -35,7 +42,13 @@ public class ClienteDAO {
         System.out.println("Cliente creado");
     }
     
-    
+    /**
+     * Busca y devuelve un cliente a partir de su número de teléfono.
+     *
+     * @param telefono El número de teléfono del cliente que se desea buscar.
+     * @return Un objeto Cliente correspondiente al número de teléfono proporcionado.
+     *         Si no se encuentra un cliente con ese teléfono, el método devolverá null.
+     */
     public Cliente buscarClientePorTelefono(String telefono) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu_restaurante");
         EntityManager em = emf.createEntityManager();
@@ -44,7 +57,12 @@ public class ClienteDAO {
         return query.getSingleResult();
     }
     
-    // Método para buscar todos los clientes
+    /**
+     * Obtiene y devuelve una lista de todos los clientes registrados en la base de datos.
+     *
+     * @return Una lista de objetos Cliente que representan todos los clientes registrados.
+     *         Si no hay clientes, la lista estará vacía.
+     */
     public List<Cliente> obtenerTodosLosClientes() {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();

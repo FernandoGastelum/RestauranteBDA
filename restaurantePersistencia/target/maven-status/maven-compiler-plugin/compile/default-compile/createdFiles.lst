@@ -11,11 +11,13 @@ Entidades\Reserva.class
 com\mycompany\restaurantepersistencia\RestaurantePersistencia.class
 Dto\CancelacionDTO.class
 Entidades\Reserva_.class
+DAO\ConsultaDAO.class
 Dto\ReservaDTO.class
 Dto\ClienteDTO.class
 Dto\MesaDTO.class
 Entidades\Sucursal_.class
 DAO\ReservaDAO.class
+Dto\ConsultaDTO.class
 DAO\ClienteDAO.class
 Entidades\Cancelacion_.class
 Entidades\Mesa.class

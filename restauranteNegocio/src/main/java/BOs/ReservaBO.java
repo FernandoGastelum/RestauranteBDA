@@ -11,13 +11,23 @@ import java.time.LocalDate;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author gaspa
+ * La clase ReservaBO proporciona lógica de negocio para la gestión de reservas en el sistema.
+ * Incluye métodos para calcular el costo de una reserva, cargar datos de reservas en tablas de visualización,
+ * y gestionar la limpieza de dichas tablas.
  */
 public class ReservaBO {
     private ReservaDAO reservaDAO = new ReservaDAO();
+    /**
+     * Constructor por defecto para la clase ReservaBO.
+     */
     public ReservaBO() {
     }
+    /**
+     * Calcula el costo de la reserva en función del número de personas.
+     * 
+     * @param numPersonas Número de personas que incluye la reserva.
+     * @return El costo correspondiente de la reserva según el número de personas.
+     */
     public Double calcularCosto(int numPersonas) {
         if (numPersonas <= 2) {
             return 300.0;
@@ -28,12 +38,22 @@ public class ReservaBO {
         }
         return 0.0;
     }
+    /**
+     * Limpia todas las filas de una tabla específica en el modelo proporcionado.
+     * 
+     * @param model El modelo de tabla (DefaultTableModel) que se limpiará.
+     */
     public void limpiarTabla(DefaultTableModel model){
         for (int i = 0; i < model.getRowCount() ; i++) {
             model.removeRow(i);
             i=i-1;
         }
     }
+    /**
+     * Carga todas las reservas disponibles en el modelo de tabla proporcionado.
+     * 
+     * @param model El modelo de tabla (DefaultTableModel) en el que se cargarán las reservas.
+     */
     public void cargarTablaReservas(DefaultTableModel model){
         
         java.util.List<Reserva> listaReservas = reservaDAO.obtenerTodasLasReservasDisponibles();
@@ -48,7 +68,16 @@ public class ReservaBO {
             });
         }
     }
-    
+    /**
+     * Carga las reservas en un rango de fechas especificado y filtradas por tipo y ubicación en el modelo de tabla.
+     * También indica si una reserva ha sido cancelada y muestra cualquier multa aplicada.
+     * 
+     * @param model El modelo de tabla (DefaultTableModel) en el que se cargarán las reservas.
+     * @param fecha1 La fecha inicial del rango de búsqueda.
+     * @param fecha2 La fecha final del rango de búsqueda.
+     * @param tipo El tipo de mesa para filtrar las reservas.
+     * @param ubicacion La ubicación de la mesa para filtrar las reservas.
+     */
     public void cargarTablaReservas(DefaultTableModel model, LocalDate fecha1, LocalDate fecha2, String tipo, String ubicacion) {
         java.util.List<Reserva> listaReservas = reservaDAO.obtenerReservasReportes(fecha1, fecha2, tipo, ubicacion);
 
@@ -72,7 +101,11 @@ public class ReservaBO {
             });
         }
     }
-    
+    /**
+     * Carga todas las reservas generales en el modelo de tabla, incluyendo información de cancelaciones y multas.
+     * 
+     * @param model El modelo de tabla (DefaultTableModel) en el que se cargarán las reservas generales.
+     */
     public void cargarTablaReservasGeneral(DefaultTableModel model) {
         java.util.List<Reserva> listaReservas = reservaDAO.obtenerTodasLasReservas();
 

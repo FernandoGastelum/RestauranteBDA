@@ -11,11 +11,18 @@ import java.time.temporal.ChronoUnit;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author gaspa
+ * La clase CancelacionesBO representa la capa de negocio para las operaciones de cancelaciones en el sistema.
+ * Proporciona métodos para calcular la multa por cancelación, limpiar el contenido de una tabla, y cargar datos de cancelaciones.
  */
 public class CancelacionesBO {
     private CancelacionDAO cancelacionDAO = new CancelacionDAO();
+    /**
+     * Calcula la multa aplicable para una reserva cancelada según la proximidad de la fecha y hora de la reserva.
+     *
+     * @param fechaHoraReserva Fecha y hora de la reserva.
+     * @param costoReserva     Costo de la reserva.
+     * @return El valor de la multa calculada en base a la diferencia horaria respecto a la fecha actual.
+     */
     public double calcularMulta(LocalDateTime fechaHoraReserva, double costoReserva) {
         
         LocalDateTime fechaHoraActual = LocalDateTime.now();
@@ -33,12 +40,23 @@ public class CancelacionesBO {
         }
         return multa;
     }
+    /**
+     * Limpia el contenido de una tabla especificada eliminando todas sus filas.
+     *
+     * @param model El modelo de tabla (DefaultTableModel) al que se le eliminarán las filas.
+     */
     public void limpiarTabla(DefaultTableModel model){
         for (int i = 0; i < model.getRowCount() ; i++) {
             model.removeRow(i);
             i=i-1;
         }
     }
+    /**
+     * Carga los datos de cancelaciones en un modelo de tabla para su visualización.
+     * Recupera las cancelaciones desde el DAO y añade cada una como una fila en la tabla.
+     *
+     * @param model El modelo de tabla (DefaultTableModel) donde se cargarán las cancelaciones.
+     */
     public void cargarTablaCancelaciones(DefaultTableModel model){
         
         java.util.List<Cancelacion> listaCancelaciones = cancelacionDAO.buscarCancelaciones();

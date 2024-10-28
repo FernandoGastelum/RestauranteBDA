@@ -17,23 +17,39 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author gaspa
+ * La clase ClienteBO representa la capa de negocio para las operaciones relacionadas con clientes en el sistema.
+ * Proporciona métodos para crear, buscar, y cargar clientes, además de otras funciones auxiliares.
  */
 public class ClienteBO {
     private ClienteDAO clienteDAO = new ClienteDAO();
     private EntityManager em;
-
+    /**
+     * Constructor vacío para la clase ClienteBO.
+     */
     public ClienteBO() {
     }
-
+    /**
+     * Persiste un nuevo cliente en la base de datos.
+     *
+     * @param cliente El cliente a ser persistido.
+     */
     public void crearCliente(Cliente cliente) {
         em.persist(cliente);
     }
+    /**
+     * Busca un cliente en la base de datos mediante su número de teléfono.
+     *
+     * @param telefono El número de teléfono del cliente.
+     * @return El cliente correspondiente al número de teléfono, o null si no se encuentra.
+     */
     public Cliente buscarClientePorTelefono(String telefono) {
         return clienteDAO.buscarClientePorTelefono(telefono);
     }
-    // Método para obtener todos los clientes en forma de DTO
+    /**
+     * Obtiene todos los clientes de la base de datos y los convierte en una lista de ClienteDTO.
+     *
+     * @return Una lista de objetos ClienteDTO que representan a los clientes.
+     */
     public List<ClienteDTO> cargarClientes() {
         // Obtener la lista de entidades Cliente desde el DAO
         List<Cliente> clientes = clienteDAO.obtenerTodosLosClientes();
@@ -45,12 +61,22 @@ public class ClienteBO {
                 cliente.getTelefono()))
                 .collect(Collectors.toList());
     }
+    /**
+     * Limpia todas las filas de un modelo de tabla.
+     *
+     * @param model El modelo de tabla (DefaultTableModel) del cual se eliminarán las filas.
+     */
     public void limpiarTabla(DefaultTableModel model){
         for (int i = 0; i < model.getRowCount() ; i++) {
             model.removeRow(i);
             i=i-1;
         }
     }
+    /**
+     * Carga los datos de todos los clientes en un modelo de tabla para su visualización.
+     *
+     * @param model El modelo de tabla (DefaultTableModel) donde se cargarán los clientes.
+     */
     public void cargarTablaClientes(DefaultTableModel model){
         java.util.List<Cliente> listaClientes = clienteDAO.obtenerTodosLosClientes();
         
@@ -61,6 +87,11 @@ public class ClienteBO {
             });
         }
     }
+    /**
+     * Genera una lista de clientes de muestra en formato ClienteDTO.
+     *
+     * @return Una lista de objetos ClienteDTO con datos ficticios.
+     */
     public List<ClienteDTO> generarClientes() {
         List<ClienteDTO> clientes = new ArrayList<>();
         
@@ -88,6 +119,12 @@ public class ClienteBO {
 
         return clientes;
     }
+    /**
+     * Registra una lista de clientes en la base de datos.
+     *
+     * @param clientes La lista de clientes a registrar.
+     * @throws Exception Si ocurre un error durante el proceso de registro.
+     */
     public void registrarClientes(List<ClienteDTO> clientes) throws Exception {
         for (ClienteDTO clienteDTO : clientes) {
             clienteDAO.registrarCliente(clienteDTO);

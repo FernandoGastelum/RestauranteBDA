@@ -19,15 +19,23 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 
 /**
- *
- * @author gaspa
+ * La clase ReporteBO se encarga de generar reportes en formato PDF que contienen tablas de datos.
+ * Utiliza Apache PDFBox para la creación y configuración de los documentos PDF.
  */
 public class ReporteBO {
-
+    /**
+     * Constructor por defecto para la clase ReporteBO.
+     */
     public ReporteBO() {
     }
     
-    
+    /**
+     * Genera un archivo PDF que contiene una tabla basada en el modelo de datos proporcionado.
+     * Permite al usuario seleccionar la ubicación de guardado a través de un cuadro de diálogo.
+     *
+     * @param model El modelo de datos (DefaultTableModel) que contiene los datos a incluir en la tabla.
+     * @param nombreRestaurante El nombre del restaurante que se mostrará como encabezado en el PDF.
+     */
     public void generarPDFConTabla(DefaultTableModel model, String nombreRestaurante) {
     try {
         PDDocument documento = new PDDocument();
@@ -137,7 +145,17 @@ public class ReporteBO {
     }
 }
 
-// Método para dibujar una celda con texto ajustado
+    /**
+     * Dibuja una celda en el PDF con un borde y el texto alineado dentro de ella.
+     *
+     * @param contenido El flujo de contenido de la página donde se dibujará la celda.
+     * @param text El texto que se mostrará dentro de la celda.
+     * @param x La coordenada X de la celda.
+     * @param y La coordenada Y de la celda.
+     * @param width El ancho de la celda.
+     * @param height La altura de la celda.
+     * @throws IOException Si ocurre un error al escribir en el flujo de contenido.
+     */
     private void drawCell(PDPageContentStream contenido, String text, float x, float y, float width, float height) throws IOException {
         contenido.setLineWidth(1f);
         contenido.moveTo(x, y);

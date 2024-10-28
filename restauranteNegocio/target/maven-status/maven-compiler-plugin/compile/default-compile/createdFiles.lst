@@ -1,9 +1,12 @@
 BOs\ClienteBO.class
+Dto\CancelacionDTO.class
 com\mycompany\restaurantenegocio\RestauranteNegocio.class
 Dto\ReservaDTO.class
+BOs\ReporteBO.class
 BOs\SucursalBO.class
 Dto\ClienteDTO.class
 Dto\MesaDTO.class
 BOs\ReservaBO.class
+BOs\CancelacionesBO.class
 BOs\MesaBO.class
 Dto\SucursalDTO.class

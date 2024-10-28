@@ -4,6 +4,9 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Entidades.Sucursal</class>
     <class>Entidades.Reserva</class>
+    <class>Entidades.Cancelacion</class>
+    <class>Entidades.Cliente</class>
+    <class>Entidades.Mesa</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/restauranteBDA"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

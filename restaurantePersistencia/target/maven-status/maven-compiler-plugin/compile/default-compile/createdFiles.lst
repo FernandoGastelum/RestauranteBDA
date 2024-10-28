@@ -1,8 +1,10 @@
+DAO\CancelacionDAO.class
 DAO\MesaDAO.class
 Entidades\Mesa_.class
 Entidades\Sucursal.class
 Entidades\Cliente_.class
 Entidades\Cliente.class
+Entidades\Cancelacion.class
 DAO\SucursalDAO.class
 Entidades\Reserva.class
 com\mycompany\restaurantepersistencia\RestaurantePersistencia.class
@@ -10,4 +12,5 @@ Entidades\Reserva_.class
 Entidades\Sucursal_.class
 DAO\ReservaDAO.class
 DAO\ClienteDAO.class
+Entidades\Cancelacion_.class
 Entidades\Mesa.class

@@ -357,35 +357,35 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Component id="jScrollPane2" pref="610" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jScrollPane2" alignment="0" pref="610" max="32767" attributes="0"/>
-                                      <Group type="102" attributes="0">
+                                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                      <Component id="agregarMesasBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                              <Component id="agregarMesasBtn" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
                                                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                               </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="mesasTipoMesaComboBox" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                                  <Component id="mesasUbicacionComboBox" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
-                                          <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                                              <Component id="mesasCantidadTxt" min="-2" pref="127" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="mesasTipoMesaComboBox" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Component id="mesasUbicacionComboBox" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="mesasCantidadTxt" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -395,18 +395,25 @@
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" min="-2" pref="125" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="mesasTipoMesaComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="mesasUbicacionComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="mesasCantidadTxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jScrollPane2" min="-2" pref="125" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="mesasTipoMesaComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="mesasUbicacionComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="mesasCantidadTxt" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Component id="agregarMesasBtn" min="-2" max="-2" attributes="0"/>
@@ -467,7 +474,7 @@
                         <StringItem index="0" value="Peque&#xf1;a"/>
                         <StringItem index="1" value="Mediana"/>
                         <StringItem index="2" value="Grande"/>
-                        <StringItem index="3" value=" "/>
+                        <StringItem index="3" value=""/>
                       </StringArray>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -646,10 +653,10 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel16">
                   <Properties>
+                    <Property name="text" type="java.lang.String" value="Reservas"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Reservas"/>
                   </Properties>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane6">
@@ -676,10 +683,10 @@
                 </Container>
                 <Component class="javax.swing.JLabel" name="jLabel17">
                   <Properties>
+                    <Property name="text" type="java.lang.String" value="Cancelaciones"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Cancelaciones"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -923,10 +930,10 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="reportesVistaPreviaBtn1">
                   <Properties>
+                    <Property name="text" type="java.lang.String" value="Vista previa reporte general"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Vista previa reporte general"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reportesVistaPreviaBtn1ActionPerformed"/>

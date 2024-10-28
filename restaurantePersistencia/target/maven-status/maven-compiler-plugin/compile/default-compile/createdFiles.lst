@@ -5,10 +5,15 @@ Entidades\Sucursal.class
 Entidades\Cliente_.class
 Entidades\Cliente.class
 Entidades\Cancelacion.class
+Dto\SucursalDTO.class
 DAO\SucursalDAO.class
 Entidades\Reserva.class
 com\mycompany\restaurantepersistencia\RestaurantePersistencia.class
+Dto\CancelacionDTO.class
 Entidades\Reserva_.class
+Dto\ReservaDTO.class
+Dto\ClienteDTO.class
+Dto\MesaDTO.class
 Entidades\Sucursal_.class
 DAO\ReservaDAO.class
 DAO\ClienteDAO.class

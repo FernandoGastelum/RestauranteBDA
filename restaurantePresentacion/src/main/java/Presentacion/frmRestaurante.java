@@ -911,6 +911,7 @@ public class frmRestaurante extends javax.swing.JFrame {
     private void reportesFiltrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesFiltrarBtnActionPerformed
         DefaultTableModel model = (DefaultTableModel) reportesjTable.getModel();
         reservaBO.limpiarTabla(model);
+        //cambio
         reservaBO.cargarTablaReservas(model,
                 reportesDatePicker1.getDate(),
                 reportesDatePicker2.getDate(), 

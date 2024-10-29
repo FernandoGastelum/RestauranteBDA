@@ -1065,7 +1065,7 @@ public class frmRestaurante extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelacionesBtnActionPerformed
 
     private void consultasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultasBtnActionPerformed
-        jTabbedPane2.setSelectedIndex(6);
+        jTabbedPane2.setSelectedIndex(4);
     }//GEN-LAST:event_consultasBtnActionPerformed
 
     private void reportesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesBtnActionPerformed

@@ -978,7 +978,13 @@ public class frmRestaurante extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+ /**
+     * Acción a realizar al confirmar una reserva.
+     * Se obtiene la información del cliente y mesa seleccionados,
+     * y se registra la reserva en la base de datos.
+     * 
+     * @param evt El evento que desencadena la acción.
+     */
     private void reservasConfirmarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservasConfirmarBtnActionPerformed
       
         int selectedRow = reservasTablaClientes.getSelectedRow();
@@ -999,12 +1005,23 @@ public class frmRestaurante extends javax.swing.JFrame {
             System.out.println("error "+e);
         }
     }//GEN-LAST:event_reservasConfirmarBtnActionPerformed
-
+ /**
+     * Acción a realizar al calcular el costo de la reserva.
+     * Se actualiza el campo de costo basado en el número de personas.
+     * 
+     * @param evt El evento que desencadena la acción.
+     */
     private void reservasConfirmarBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservasConfirmarBtn1ActionPerformed
         
         reservasCostoReservaTextField.setText(reservaBO.calcularCosto(Integer.parseInt(reservasNumPersonasTextField.getText())).toString());
     }//GEN-LAST:event_reservasConfirmarBtn1ActionPerformed
 
+    /**
+     * Acción a realizar al mostrar la tabla de clientes.
+     * Se carga la información de los clientes en la tabla.
+     * 
+     * @param evt El evento que desencadena la acción.
+     */
     private void reservasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservasBtnActionPerformed
         jTabbedPane2.setSelectedIndex(1);
         DefaultTableModel model = (DefaultTableModel) reservasTablaClientes.getModel();
@@ -1012,7 +1029,12 @@ public class frmRestaurante extends javax.swing.JFrame {
         clienteBO.cargarTablaClientes(model);
         
     }//GEN-LAST:event_reservasBtnActionPerformed
-
+ /**
+     * Acción a realizar al registrar una nueva sucursal.
+     * Se obtiene la información de la nueva sucursal y se registra en la base de datos.
+     * 
+     * @param evt El evento que desencadena la acción.
+     */
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         SucursalDTO sucursalDTO = new SucursalDTO("sucursalParis2", AperturaTimePicker.getTime(), cierreTimePicker.getTime());
         sucursalDAO.registrarSucursal(sucursalDTO);
@@ -1021,7 +1043,12 @@ public class frmRestaurante extends javax.swing.JFrame {
     private void mesasCantidadTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesasCantidadTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mesasCantidadTxtActionPerformed
-
+/**
+     * Acción a realizar al agregar mesas.
+     * Se generan las mesas según los parámetros especificados y se actualiza la tabla de mesas.
+     * 
+     * @param evt El evento que desencadena la acción.
+     */
     private void agregarMesasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarMesasBtnActionPerformed
         try {
             mesaBO.generarMesas(
@@ -1035,14 +1062,24 @@ public class frmRestaurante extends javax.swing.JFrame {
         mesaBO.limpiarTabla(model);
         mesaBO.cargarTablaMesa(model);
     }//GEN-LAST:event_agregarMesasBtnActionPerformed
-
+/**
+     * Acción a realizar al mostrar la tabla de mesas.
+     * Se carga la información de las mesas en la tabla.
+     * 
+     * @param evt El evento que desencadena la acción.
+     */
     private void mesasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesasBtnActionPerformed
         jTabbedPane2.setSelectedIndex(2);
         DefaultTableModel model = (DefaultTableModel) mesasTablaMesas.getModel();
         mesaBO.limpiarTabla(model);
         mesaBO.cargarTablaMesa(model);
     }//GEN-LAST:event_mesasBtnActionPerformed
-
+/**
+     * Acción a realizar al filtrar reportes.
+     * Se carga la información de las reservas en la tabla de reportes según los filtros seleccionados.
+     * 
+     * @param evt El evento que desencadena la acción.
+     */
     private void reportesFiltrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesFiltrarBtnActionPerformed
         DefaultTableModel model = (DefaultTableModel) reportesjTable.getModel();
         reservaBO.limpiarTabla(model);
@@ -1052,7 +1089,12 @@ public class frmRestaurante extends javax.swing.JFrame {
                 reportesTipoMesaComboBox.getSelectedItem().toString(), 
                 reportesUbicacionComboBox.getSelectedItem().toString());
     }//GEN-LAST:event_reportesFiltrarBtnActionPerformed
-
+/**
+     * Acción a realizar al mostrar la tabla de cancelaciones.
+     * Se carga la información de las reservas y cancelaciones en las tablas correspondientes.
+     * 
+     * @param evt El evento que desencadena la acción.
+     */
     private void cancelacionesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelacionesBtnActionPerformed
         jTabbedPane2.setSelectedIndex(3);
         DefaultTableModel model = (DefaultTableModel) cancelacionesTablaReservas.getModel();
@@ -1063,22 +1105,42 @@ public class frmRestaurante extends javax.swing.JFrame {
         cancelacionesBO.cargarTablaCancelaciones(model);
         
     }//GEN-LAST:event_cancelacionesBtnActionPerformed
-
+/**
+     * Acción a realizar al mostrar la interfaz de consultas.
+     * Cambia la pestaña activa a la sección de consultas.
+     * 
+     * @param evt El evento que desencadena la acción.
+     */
     private void consultasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultasBtnActionPerformed
         jTabbedPane2.setSelectedIndex(4);
     }//GEN-LAST:event_consultasBtnActionPerformed
-
+ /**
+     * Acción a realizar al mostrar la interfaz de reportes.
+     * Cambia la pestaña activa a la sección de reportes.
+     * 
+     * @param evt El evento que desencadena la acción.
+     */
     private void reportesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesBtnActionPerformed
         jTabbedPane2.setSelectedIndex(5);
         DefaultTableModel model = (DefaultTableModel) reportesjTable.getModel();
         reservaBO.limpiarTabla(model);
         reservaBO.cargarTablaReservasGeneral(model);
     }//GEN-LAST:event_reportesBtnActionPerformed
-
+/**
+     * Acción a realizar al mostrar la interfaz de sucursales.
+     * Cambia la pestaña activa a la sección de sucursales.
+     * 
+     * @param evt El evento que desencadena la acción.
+     */
     private void sucursalesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sucursalesBtnActionPerformed
         jTabbedPane2.setSelectedIndex(6);
     }//GEN-LAST:event_sucursalesBtnActionPerformed
-
+ /**
+     * Acción a realizar al mostrar una vista previa de los reportes.
+     * Se carga la información de las reservas en el diálogo de reportes.
+     * 
+     * @param evt El evento que desencadena la acción.
+     */
     private void reportesVistaPreviaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesVistaPreviaBtnActionPerformed
         jDialogReporte reporte = new jDialogReporte(this, rootPaneCheckingEnabled);
         DefaultTableModel model = (DefaultTableModel) reporte.reportejTable.getModel();
@@ -1094,7 +1156,12 @@ public class frmRestaurante extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_reportesVistaPreviaBtnActionPerformed
-
+ /**
+     * Acción a realizar al confirmar una cancelación.
+     * Se registra la cancelación de una reserva seleccionada.
+     * 
+     * @param evt El evento que desencadena la acción.
+     */
     private void cancelacionesConfirmarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelacionesConfirmarBtnActionPerformed
         
         int selectedRow = cancelacionesTablaReservas.getSelectedRow();
@@ -1121,7 +1188,12 @@ public class frmRestaurante extends javax.swing.JFrame {
         cancelacionesBO.cargarTablaCancelaciones(model);
         
     }//GEN-LAST:event_cancelacionesConfirmarBtnActionPerformed
-
+  /**
+     * Acción a realizar al calcular la multa de una cancelación.
+     * Se calcula la multa basada en la fecha y el costo de la reserva.
+     * 
+     * @param evt El evento que desencadena la acción.
+     */
     private void cancelacionesCalcularMultaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelacionesCalcularMultaBtnActionPerformed
         DefaultTableModel model = (DefaultTableModel) cancelacionesTablaReservas.getModel();
         CancelacionesBO cancelacionesBO = new CancelacionesBO();
@@ -1176,7 +1248,10 @@ public class frmRestaurante extends javax.swing.JFrame {
 
 
     /**
-     * @param args the command line arguments
+     * Método principal para ejecutar la aplicación.
+     * Crea y muestra la interfaz del restaurante.
+     * 
+     * @param args Los argumentos de la línea de comandos.
      */
     public static void main(String args[]) {
         /* Create and display the form */

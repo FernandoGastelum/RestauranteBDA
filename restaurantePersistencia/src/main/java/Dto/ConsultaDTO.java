@@ -7,7 +7,7 @@
  * presentación, asegurando que sólo los datos necesarios se expongan.
  */
 package Dto;
-
+ 
 import java.time.LocalDateTime;
 
 public class ConsultaDTO {
